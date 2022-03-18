@@ -1,4 +1,6 @@
 import React from "react";
+import OtherStats from "./OtherStats";
+import Temperature from "./Temperature";
 
 function Current({
   cityName,
@@ -18,15 +20,20 @@ function Current({
         <span className="opacity-70">•</span>
         <span className="opacity-70 font-light">{date}</span>
       </div>
-      <div>
-        <span>{apparentTemperature}</span> <span>{temperature}</span>
+      <div className="mt-3 md:mt-5 flex justify-center gap-5">
+        <Temperature number={apparentTemperature} />
+        <Temperature number={temperature} />
       </div>
       <div>
         <img src="" alt={weatherIcon} /> <p>{weatherDescription}</p>
       </div>
-      <div>
-        <span>cloud coverage: {clouds}</span> <span>Humidity: {humidity}%</span>
-        <span>Wind: {windDetails}</span>
+      <div className="flex justify-center gap-5 text-sm md:text-base mt-5">
+        <OtherStats stat={"Cloud coverage"} value={clouds} />
+        <OtherStats stat={"Humidity"} value={`${humidity}%`} />
+        <OtherStats stat={"Wind"} value={windDetails} />
+
+        {/* <span>cloud coverage: {clouds}</span> <span>Humidity: {humidity}%</span>
+        <span>Wind: {windDetails}</span> */}
       </div>
     </div>
   );
