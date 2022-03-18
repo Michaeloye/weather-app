@@ -52,7 +52,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-blue-300 min-h-screen">
       <SearchBar
         input={input}
         stateInput={stateInput}
@@ -64,7 +64,7 @@ function App() {
         setStateInputValue={setStateInputValue}
       />
 
-      <BackgroundVideo videoURL={rain} />
+      {/* <BackgroundVideo videoURL={rain} /> */}
       {input !== "" && stateInput !== "" ? (
         <Main state={stateInput} country={input} />
       ) : null}
