@@ -32,17 +32,7 @@ function Main({ state, country }) {
         setwindDetails(data.wind_cdir + data.wind_spd);
       })
       .catch((err) => console.log(err.message));
-    console.log({
-      cityName,
-      date,
-      apparentTemperature,
-      temperature,
-      weatherIcon,
-      weatherDescription,
-      clouds,
-      humidity,
-      windDetails,
-    });
+
     return () => {
       null;
     };
