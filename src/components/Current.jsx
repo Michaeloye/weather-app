@@ -31,9 +31,6 @@ function Current({
         <OtherStats stat={"Cloud coverage"} value={clouds} />
         <OtherStats stat={"Humidity"} value={`${humidity}%`} />
         <OtherStats stat={"Wind"} value={windDetails} />
-
-        {/* <span>cloud coverage: {clouds}</span> <span>Humidity: {humidity}%</span>
-        <span>Wind: {windDetails}</span> */}
       </div>
     </div>
   );
