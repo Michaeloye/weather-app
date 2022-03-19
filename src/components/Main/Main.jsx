@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Current from "../Current";
+import Forecast from "../Forecast";
 
 function Main({ state, country }) {
   const [cityName, setCityName] = useState("");
@@ -51,6 +52,7 @@ function Main({ state, country }) {
         humidity={humidity}
         windDetails={windDetails}
       />
+      <Forecast />
     </div>
   );
 }
