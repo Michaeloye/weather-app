@@ -13,6 +13,8 @@ function Main({ state, country }) {
   const [clouds, setClouds] = useState("");
   const [humidity, setHumidity] = useState("");
   const [windDetails, setwindDetails] = useState("");
+  // Forecast data
+  const [forecastData, setForecastData] = useState("");
 
   useEffect(() => {
     axios
@@ -21,7 +23,6 @@ function Main({ state, country }) {
       )
       .then((res) => {
         const data = res.data.data[0];
-        console.log(data);
         setCityName(data.city_name);
         setDate(data.datetime.slice(0, data.datetime.indexOf(":")));
         setApparentTemperature(data.app_temp);
@@ -34,9 +35,17 @@ function Main({ state, country }) {
       })
       .catch((err) => console.log(err.message));
 
-    return () => {
-      null;
-    };
+    // The below get reques is for forecast it returns 16 day ahead weather forecast
+
+    axios
+      .get(
+        `https://api.weatherbit.io/v2.0/forecast/daily?city=${state}&country=${country}&key=aa281b7f79634dd9865be4d29994feda`
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        setForecastData(res.data.data);
+      })
+      .catch((err) => console.log(err.message));
   }, []);
 
   return (
@@ -52,7 +61,7 @@ function Main({ state, country }) {
         humidity={humidity}
         windDetails={windDetails}
       />
-      <Forecast />
+      <Forecast data={forecastData} />
     </div>
   );
 }
