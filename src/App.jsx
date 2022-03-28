@@ -52,7 +52,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-blue-300 min-h-screen">
+    <div className="bg-blue-300 min-h-screen lg:overflow-y-hidden">
       <SearchBar
         input={input}
         stateInput={stateInput}
@@ -68,6 +68,9 @@ function App() {
       {input !== "" && stateInput !== "" ? (
         <Main state={stateInput} country={input} />
       ) : null}
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
