@@ -42,7 +42,6 @@ function Main({ state, country }) {
         `https://api.weatherbit.io/v2.0/forecast/daily?city=${state}&country=${country}&key=aa281b7f79634dd9865be4d29994feda`
       )
       .then((res) => {
-        console.log(res.data.data);
         setForecastData(res.data.data);
       })
       .catch((err) => console.log(err.message));
@@ -61,7 +60,14 @@ function Main({ state, country }) {
         humidity={humidity}
         windDetails={windDetails}
       />
-      <Forecast data={forecastData} />
+      {/* Something awkward was going on the below component rendered like 6 times but each time
+      forecastData was undefined so the check below is to prevent undefined from being passed as props
+      to the component */}
+      {typeof forecastData[0] !== "undefined" ? (
+        <Forecast data={forecastData} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
