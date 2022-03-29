@@ -19,7 +19,9 @@ function Main({ state, country }) {
   useEffect(() => {
     axios
       .get(
-        `https://api.weatherbit.io/v2.0/current?city=${state}&country=${country}&key=aa281b7f79634dd9865be4d29994feda`
+        `https://api.weatherbit.io/v2.0/current?city=${state}&country=${country}&key=${
+          import.meta.env.VITE_KEY
+        }`
       )
       .then((res) => {
         const data = res.data.data[0];
@@ -39,7 +41,9 @@ function Main({ state, country }) {
 
     axios
       .get(
-        `https://api.weatherbit.io/v2.0/forecast/daily?city=${state}&country=${country}&key=aa281b7f79634dd9865be4d29994feda`
+        `https://api.weatherbit.io/v2.0/forecast/daily?city=${state}&country=${country}&key=${
+          import.meta.env.VITE_KEY
+        }`
       )
       .then((res) => {
         setForecastData(res.data.data);
